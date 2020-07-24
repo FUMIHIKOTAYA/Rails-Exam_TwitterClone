@@ -26,10 +26,14 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
-      redirect_to posts_path, notice: '投稿を編集しました！'
-    else
+    if params[:back]
       render :edit
+    else
+      if @post.update(post_params)
+        redirect_to posts_path, notice: '投稿を編集しました！'
+      else
+        render :edit
+      end
     end
   end
 
@@ -40,6 +44,7 @@ class PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
+    @post.id = params[:id]
     render :new if @post.invalid?
   end
 
