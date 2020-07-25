@@ -9,7 +9,17 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body
+    <header>
+      <div><%= link_to 'TWclone', posts_path %></div>
+    </header>
+    <div class="wrapper">
+      <div class="container">
+        <%= yield %>
+      </div>
+      <footer>
+        <small>&copy; 2020 TWclone</small>
+      </footer>
+    </div>
   </body>
 </html>
